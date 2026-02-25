@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auria Airlines - Sua jornada começa aqui</title>
+    <meta name="description" content="Passagens aéreas com as melhores milhas e ofertas exclusivas. Descubra novos destinos com a Auria.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fa;
+            color: #111827;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Topbar */
+        .topbar {
+            background: linear-gradient(90deg, #0b1f33 0%, #0f2a44 100%);
+            color: #b0c4de;
+            font-size: 0.9rem;
+            padding: 10px 0;
+            border-bottom: 1px solid #1e3a5f;
+        }
+
+        .topbar-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .topbar-left a, .topbar-right a {
+            color: #d1dbe9;
+            text-decoration: none;
+            margin-right: 28px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .topbar-left a:hover, .topbar-right a:hover {
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .btn-sm {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white !important;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-weight: 600;
+            margin-right: 0 !important;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-sm:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 85px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-area img {
+            height: 45px;
+            width: auto;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #0b1a2a, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 36px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+        }
+
+        /* Hero com imagem de fundo */
+        .hero {
+            position: relative;
+            padding: 60px 0 100px;
+            color: white;
+            overflow: hidden;
+            background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 26, 43, 0.85) 0%, rgba(26, 59, 92, 0.8) 50%, rgba(45, 75, 110, 0.75) 100%);
+            pointer-events: none;
+        }
+
+        .hero-text {
+            max-width: 600px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #e2e8f0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Booking Card */
+        .booking-card {
+            background: white;
+            border-radius: 40px;
+            padding: 36px;
+            box-shadow: 0 40px 70px rgba(0, 0, 0, 0.4);
+            max-width: 1200px;
+            position: relative;
+            z-index: 5;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .service-pills {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .service-pills button {
+            background: #f1f4f9;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #334155;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .service-pills button i {
+            font-size: 1.2rem;
+        }
+
+        .service-pills button.active {
+            background: #2563eb;
+            color: white;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .search-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1.2fr 1.8fr 0.9fr auto;
+            gap: 16px;
+            align-items: end;
+        }
+
+        .input-box {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-box label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #475569;
+        }
+
+        .input-box input, .input-box select {
+            padding: 14px 16px;
+            border: 2px solid #e9eef2;
+            border-radius: 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            background: #fafcff;
+            width: 100%;
+            transition: all 0.2s;
+        }
+
+        .input-box input:focus, .input-box select:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .date-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-main {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            height: fit-content;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .btn-main:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.5);
+        }
+
+        /* Quick Access */
+        .quick-access {
+            margin-top: -45px;
+            position: relative;
+            z-index: 20;
+            padding-bottom: 70px;
+        }
+
+        .access-grid {
+            background: white;
+            border-radius: 40px;
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            box-shadow: 0 25px 45px -10px rgba(0,0,0,0.15);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .access-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #0f172a;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.2s;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 50px;
+        }
+
+        .access-item:hover {
+            background: #f0f4ff;
+            color: #2563eb;
+        }
+
+        .access-item i {
+            font-size: 2rem;
+            color: #2563eb;
+        }
+
+        /* Ofertas de Milhas */
+        .milhas-ofertas {
+            padding: 70px 0;
+            background: #ffffff;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0b1a2a, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .link-all {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .ofertas-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .oferta-card {
+            background: linear-gradient(145deg, #ffffff, #f5f9ff);
+            border-radius: 32px;
+            padding: 28px 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eef2f8;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .oferta-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+            opacity: 0.8;
+        }
+
+        .oferta-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(37, 99, 235, 0.15);
+        }
+
+        .oferta-badge {
+            background: linear-gradient(135deg, #f97316, #f59e0b);
+            color: white;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 8px 15px rgba(249, 115, 22, 0.3);
+        }
+
+        .oferta-rota {
+            margin-bottom: 16px;
+        }
+
+        .rota-cidade {
+            font-size: 0.9rem;
+            color: #64748b;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .rota-codigos {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.2;
+            margin: 4px 0 8px;
+        }
+
+        .rota-codigos span {
+            background: #eef2ff;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2563eb;
+            margin-left: 8px;
+        }
+
+        .preco-original {
+            color: #94a3b8;
+            text-decoration: line-through;
+            font-size: 1rem;
+            margin: 16px 0 4px;
+        }
+
+        .preco-promo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+
+        .preco-promo small {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #64748b;
+        }
+
+        .preco-detalhe {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin: 8px 0 16px;
+        }
+
+        .btn-resgate {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border: none;
+            padding: 14px 0;
+            width: 100%;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-resgate:hover {
+            background: linear-gradient(135deg, #059669, #047857);
+            transform: scale(1.02);
+        }
+
+        /* Seção de Voos */
+        .voos-selecao {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+        }
+
+        .voos-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .voos-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .rotas-codigos {
+            display: flex;
+            gap: 50px;
+            font-weight: 800;
+            font-size: 2rem;
+        }
+
+        .rotas-codigos span {
+            color: #0f172a;
+            position: relative;
+        }
+
+        .rotas-codigos span:first-child::after {
+            content: "✈";
+            position: absolute;
+            right: -35px;
+            color: #2563eb;
+            font-size: 1.5rem;
+        }
+
+        .voo-card {
+            background: white;
+            border-radius: 30px;
+            padding: 28px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: all 0.2s;
+            border: 1px solid #eef2f8;
+        }
+
+        .voo-card:hover {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            border-color: #2563eb20;
+        }
+
+        .voo-info {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .voo-horario {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: #0f172a;
+        }
+
+        .voo-rota {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .voo-rota small {
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .voo-escala {
+            background: #f0f4ff;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #2563eb;
+        }
+
+        .voo-preco {
+            font-weight: 800;
+            font-size: 2rem;
+            color: #0f172a;
+        }
+
+        .voo-companhia {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        /* ========== CARROSSEL PERFEITO ========== */
+        .carrossel-container {
+            position: relative;
+            max-width: 100%;
+            margin: 40px auto 20px;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px -15px rgba(0,20,40,0.3);
+        }
+
+        .carrossel-wrapper {
+            overflow: hidden;
+            border-radius: 40px;
+        }
+
+        .carrossel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carrossel-slide {
+            flex: 0 0 100%;
+            aspect-ratio: 16 / 9;
+            position: relative;
+        }
+
+        .carrossel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-legenda {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 40px 30px 20px;
+            font-size: 2rem;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .slide-legenda small {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.9;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .preco-tag {
+            background: #2563eb;
+            padding: 8px 25px;
+            border-radius: 60px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border: 2px solid white;
+        }
+
+        .carrossel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(8px);
+            color: white;
+            border: none;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 10;
+            border: 1px solid rgba(255,255,255,0.4);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .carrossel-btn:hover {
+            background: rgba(37, 99, 235, 0.9);
+            transform: translateY(-50%) scale(1.1);
+            border-color: white;
+        }
+
+        .btn-prev {
+            left: 20px;
+        }
+
+        .btn-next {
+            right: 20px;
+        }
+
+        .carrossel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 20px;
+            background: #cbd5e1;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .dot.active {
+            background: #2563eb;
+            width: 30px;
+        }
+        /* ========== FIM CARROSSEL ========== */
+
+        /* ========== SEÇÃO FROTA OTIMIZADA ========== */
+        .frota {
+            background: linear-gradient(135deg, #0b1a2a, #1e3a5f);
+            color: white;
+            padding: 90px 0;
+            border-radius: 60px 60px 0 0;
+            margin-top: 30px;
+        }
+
+        .frota h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 50px;
+        }
+
+        .frota-flex {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .frota-text {
+            flex: 1;
+        }
+
+        .frota-text h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .frota-text p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+            max-width: 450px;
+            line-height: 1.6;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #3b82f6;
+            color: white;
+            padding: 14px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+        }
+
+        .btn-outline:hover {
+            background: #3b82f6;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
+        }
+
+        .frota-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .frota-visual img {
+            max-width: 100%;
+            width: auto;
+            max-height: 350px;
+            border-radius: 30px;
+            box-shadow: 0 30px 40px rgba(0,0,0,0.5);
+            border: 2px solid rgba(255,255,255,0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s;
+            object-fit: cover;
+        }
+
+        .frota-visual img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 35px 50px rgba(0,0,0,0.6);
+            border-color: rgba(59,130,246,0.5);
+        }
+
+        /* Selo de qualidade */
+        .selo-qualidade {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 22px;
+            border-radius: 60px;
+            margin: 25px 0 30px;
+            width: fit-content;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+            font-weight: 500;
+        }
+        .selo-qualidade span {
+            font-weight: 600;
+            color: #fbbf24;
+            letter-spacing: 0.3px;
+        }
+
+        /* Grid de benefícios */
+        .beneficios-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 70px;
+        }
+
+        .beneficio-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .beneficio-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-8px);
+            border-color: #3b82f6;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.3);
+        }
+
+        .beneficio-card i {
+            font-size: 2.8rem;
+            color: #3b82f6;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .beneficio-card:hover i {
+            transform: scale(1.1);
+        }
+
+        .beneficio-card h4 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .beneficio-card p {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            max-width: 220px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a1420;
+            color: #9ca3af;
+            padding-top: 70px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-brand img {
+            height: 45px;
+            margin-bottom: 20px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-brand p {
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .socials {
+            display: flex;
+            gap: 20px;
+            font-size: 1.8rem;
+            color: #d1d5db;
+        }
+
+        .socials i {
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .socials i:hover {
+            color: #2563eb;
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #9ca3af;
+            text-decoration: none;
+            margin-bottom: 15px;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1f2937;
+            padding: 25px 0;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        /* NOVAS SEÇÕES E MODAL */
+        .hidden-section {
+            display: none;
+            padding: 60px 0;
+        }
+
+        .destinos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .destino-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .destino-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .destino-info {
+            padding: 20px;
+        }
+
+        .btn-voltar {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 40px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        .modal-content h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #0f172a;
+        }
+
+        .modal-content p {
+            margin-bottom: 30px;
+            color: #334155;
+        }
+
+        .modal-content button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .service-message {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e6f0ff;
+            border-radius: 20px;
+            color: #2563eb;
+            font-weight: 500;
+            display: none;
+        }
+
+        /* Responsividade */
+        @media (max-width: 1100px) {
+            .search-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .ofertas-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .beneficios-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .frota-flex {
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .frota-flex {
+                flex-direction: column;
+                text-align: center;
+            }
+            .frota-text {
+                max-width: 100%;
+            }
+            .selo-qualidade {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .frota-visual img {
+                max-height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .ofertas-grid {
+                grid-template-columns: 1fr;
+            }
+            .slide-legenda {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .preco-tag {
+                font-size: 1.2rem;
+                padding: 5px 15px;
+            }
+            .beneficios-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .frota-visual img {
+                max-height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="container topbar-flex">
+        <div class="topbar-left">
+            <a href="#"><i class="ph ph-info"></i> Status do Voo</a>
+            <a href="#"><i class="ph ph-question"></i> Central de Ajuda</a>
+            <a href="#"><i class="ph ph-currency-circle-dollar"></i> Milhas</a>
+        </div>
+        <div class="topbar-right">
+            <a href="#"><i class="ph ph-user-circle"></i> Minha Conta</a>
+            <a href="#" class="btn-sm">Cadastre-se</a>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar">
+    <div class="container nav-container">
+        <a href="index.html" class="logo-area">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%232563eb'/%3E%3Cpath d='M35 45 L65 45 L70 55 L30 55 Z' fill='white'/%3E%3Ctext x='50' y='75' font-size='40' text-anchor='middle' fill='white' font-family='Inter' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E" alt="Logo Auria">
+            <span class="logo-text">Auria</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#" class="active" id="navInicio">Início</a></li>
+            <li><a href="#" id="navDestinos">Destinos</a></li>
+            <li><a href="#">Minhas Reservas</a></li>
+            <li><a href="#frota">Frota</a></li>
+            <li><a href="#">A Empresa</a></li>
+            <li><a href="#"><i class="ph ph-star"></i> Clube Auria</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Conteúdo Principal (Início) -->
+<main id="mainContent">
+    <header class="hero">
+        <div class="container">
+            <div class="hero-text">
+                <h1>Reserve seu Voo <br><span style="font-size: 2.2rem; font-weight: 400; display: block; margin-top: 10px;">Vamos descobrir uma nova aventura!</span></h1>
+                <p>Destinos incríveis esperam por você. Confira nossas ofertas exclusivas em milhas.</p>
+            </div>
+
+            <div class="booking-card">
+                <div class="service-pills">
+                    <button class="active" data-service="voos"><i class="ph ph-airplane"></i> Voos</button>
+                    <button data-service="onibus"><i class="ph ph-bus"></i> Ônibus</button>
+                    <button data-service="hoteis"><i class="ph ph-bed"></i> Hotéis</button>
+                    <button data-service="pacotes"><i class="ph ph-package"></i> Pacotes</button>
+                    <button data-service="milhas"><i class="ph ph-coin"></i> Milhas</button>
+                </div>
+                <div id="serviceMessage" class="service-message"></div>
+
+                <form class="search-form" id="searchForm">
+                    <div class="search-grid">
+                        <div class="input-box">
+                            <label id="origemLabel">Origem</label>
+                            <input type="text" placeholder="Cidade ou aeroporto" value="Montreal, Canadá (YUL)" id="origemInput">
+                        </div>
+                        <div class="input-box">
+                            <label id="destinoLabel">Destino</label>
+                            <input type="text" placeholder="Para onde vamos?" value="Tóquio, Japão (NRT)" id="destinoInput">
+                        </div>
+                        <div class="input-box">
+                            <label id="dataLabel">Ida e Volta</label>
+                            <div class="date-group">
+                                <input type="date" value="2025-06-15" id="dataIda">
+                                <input type="date" value="2025-06-22" id="dataVolta">
+                            </div>
+                        </div>
+                        <div class="input-box">
+                            <label>Passageiros</label>
+                            <select id="passageiros">
+                                <option>1 passageiro</option>
+                                <option>2 passageiros</option>
+                                <option>3 passageiros</option>
+                                <option>4+ passageiros</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-main">BUSCAR VOOS</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <section class="quick-access">
+        <div class="container access-grid">
+            <div class="access-item" data-acao="checkin"><i class="ph ph-check-square-offset"></i> <span>Check-in</span></div>
+            <div class="access-item" data-acao="bagagens"><i class="ph ph-suitcase-rolling"></i> <span>Bagagens</span></div>
+            <div class="access-item" data-acao="alterar"><i class="ph ph-clock-counter-clockwise"></i> <span>Alterar Voo</span></div>
+            <div class="access-item" data-acao="app"><i class="ph ph-device-mobile"></i> <span>App Auria</span></div>
+            <div class="access-item" data-acao="comprarMilhas"><i class="ph ph-coin"></i> <span>Comprar Milhas</span></div>
+        </div>
+    </section>
+
+    <!-- Seção de Ofertas de Milhas -->
+    <section class="milhas-ofertas">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ofertas imperdíveis em milhas</h2>
+                <a class="link-all" id="verTodasOfertas">Ver todas <i class="ph ph-arrow-right"></i></a>
+            </div>
+
+            <div class="ofertas-grid" id="ofertasGrid">
+                <!-- Oferta 1 -->
+                <div class="oferta-card" data-oferta="GRU-SCL">
+                    <div class="oferta-badge">ATÉ 20% OFF!</div>
+                    <div class="oferta-rota">
+                        <div class="rota-cidade">De: SÃO PAULO (GRU)</div>
+                        <div class="rota-codigos">Para: SANTIAGO <span>SCL</span></div>
+                    </div>
+                    <div class="preco-original">De: 36.000 milhas</div>
+                    <div class="preco-promo">28.600 <small>milhas</small></div>
+                    <div class="preco-detalhe">o trecho + taxas*</div>
+                    <div style="font-size: 0.9rem; color: #2563eb; margin: 8px 0; font-weight: 600;">Clube Auria ou Diamante</div>
+                    <button class="btn-resgate">RESGATE JÁ</button>
+                </div>
+                <!-- Oferta 2 -->
+                <div class="oferta-card" data-oferta="MAO-CUR">
+                    <div class="oferta-badge" style="background: linear-gradient(135deg, #2563eb, #1d4ed8);">ATÉ 15% OFF!</div>
+                    <div class="oferta-rota">
+                        <div class="rota-cidade">De: MANAUS (MAO)</div>
+                        <div class="rota-codigos">Para: CURAÇAO <span>CUR</span></div>
+                    </div>
+                    <div class="preco-original">De: 35.000 milhas</div>
+                    <div class="preco-promo">29.400 <small>milhas</small></div>
+                    <div class="preco-detalhe">o trecho + taxas*</div>
+                    <div style="font-size: 0.9rem; color: #2563eb; margin: 8px 0; font-weight: 600;">Clube Auria ou Diamante</div>
+                    <button class="btn-resgate">RESGATE JÁ</button>
+                </div>
+                <!-- Oferta 3 -->
+                <div class="oferta-card" data-oferta="MAO-ADZ">
+                    <div class="oferta-badge" style="background: linear-gradient(135deg, #2563eb, #1d4ed8);">ATÉ 15% OFF!</div>
+                    <div class="oferta-rota">
+                        <div class="rota-cidade">De: MANAUS (MAO)</div>
+                        <div class="rota-codigos">Para: SAN ANDRÉS <span>ADZ</span></div>
+                    </div>
+                    <div class="preco-original">De: 38.000 milhas</div>
+                    <div class="preco-promo">31.600 <small>milhas</small></div>
+                    <div class="preco-detalhe">o trecho + taxas*</div>
+                    <div style="font-size: 0.9rem; color: #2563eb; margin: 8px 0; font-weight: 600;">Clube Auria ou Diamante</div>
+                    <button class="btn-resgate">RESGATE JÁ</button>
+                </div>
+                <!-- Oferta 4 -->
+                <div class="oferta-card" data-oferta="POA-SCL">
+                    <div class="oferta-badge">ATÉ 20% OFF!</div>
+                    <div class="oferta-rota">
+                        <div class="rota-cidade">De: PORTO ALEGRE (POA)</div>
+                        <div class="rota-codigos">Para: SANTIAGO <span>SCL</span></div>
+                    </div>
+                    <div class="preco-original">De: 48.000 milhas</div>
+                    <div class="preco-promo">37.700 <small>milhas</small></div>
+                    <div class="preco-detalhe">o trecho + taxas*</div>
+                    <div style="font-size: 0.9rem; color: #2563eb; margin: 8px 0; font-weight: 600;">Clube Auria ou Diamante</div>
+                    <button class="btn-resgate">RESGATE JÁ</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Seleção de Voos -->
+    <section class="voos-selecao">
+        <div class="container">
+            <div class="voos-header">
+                <h2>Selecione seu Voo</h2>
+                <div class="rotas-codigos">
+                    <span>YUL</span> <span>NRT</span>
+                </div>
+            </div>
+
+            <div class="voo-card">
+                <div class="voo-info">
+                    <div class="voo-horario">07h05</div>
+                    <div class="voo-rota">
+                        <span style="font-weight: 700;">YUL</span> <small>→</small> <span style="font-weight: 700;">13h00 NRT</span>
+                    </div>
+                </div>
+                <div class="voo-companhia"><i class="ph ph-briefcase" style="color:#2563eb;"></i> Executiva Primeira Classe</div>
+            </div>
+
+            <div class="voo-card">
+                <div class="voo-info">
+                    <div class="voo-horario">09h05</div>
+                    <div class="voo-rota">
+                        <span style="font-weight: 700;">YUL</span> <small>→</small> <span style="font-weight: 700;">19h55 HND</span>
+                    </div>
+                </div>
+                <div class="voo-escala">1 escala YYZ (3h55min)</div>
+                <div class="voo-companhia">Scoot</div>
+            </div>
+
+            <div class="voo-card">
+                <div class="voo-info">
+                    <div class="voo-horario">20h05</div>
+                    <div class="voo-rota">
+                        <span style="font-weight: 700;">YUL</span> <small>→</small> <span style="font-weight: 700;">NRT</span>
+                    </div>
+                </div>
+                <div class="voo-preco">$ 1.400</div>
+                <div class="voo-companhia"><i class="ph ph-ticket"></i> Econômica</div>
+            </div>
+
+            <h3 style="margin: 50px 0 30px; font-size: 1.8rem;">Melhores Ofertas</h3>
+            
+            <!-- CARROSSEL PERFEITO -->
+            <div class="carrossel-container">
+                <button class="carrossel-btn btn-prev" id="btnPrev"><i class="ph ph-caret-left"></i></button>
+                <div class="carrossel-wrapper">
+                    <div class="carrossel-slides" id="carrosselSlides">
+                        <!-- Slide 1 -->
+                        <div class="carrossel-slide">
+                            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-4.0.3&auto=format&fit=crop&w=2073&q=80" alt="Paris">
+                            <div class="slide-legenda">
+                                <span>🇫🇷 Paris, França <small>11 voos por dia</small></span>
+                                <span class="preco-tag">a partir de 22.500 milhas</span>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="carrossel-slide">
+                            <img src="https://images.unsplash.com/photo-1537996194471-e657dfaab6b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2038&q=80" alt="Bali">
+                            <div class="slide-legenda">
+                                <span>🇮🇩 Bali, Indonésia <small>com conexão em Dubai</small></span>
+                                <span class="preco-tag">a partir de 31.000 milhas</span>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="carrossel-slide">
+                            <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Maldivas">
+                            <div class="slide-legenda">
+                                <span>🇲🇻 Maldivas <small>paraíso tropical</small></span>
+                                <span class="preco-tag">a partir de 42.000 milhas</span>
+                            </div>
+                        </div>
+                        <!-- Slide 4 -->
+                        <div class="carrossel-slide">
+                            <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2083&q=80" alt="Veneza">
+                            <div class="slide-legenda">
+                                <span>🇮🇹 Veneza, Itália <small>romantismo sem igual</small></span>
+                                <span class="preco-tag">a partir de 28.700 milhas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carrossel-btn btn-next" id="btnNext"><i class="ph ph-caret-right"></i></button>
+                <div class="carrossel-dots" id="carrosselDots">
+                    <button class="dot active"></button>
+                    <button class="dot"></button>
+                    <button class="dot"></button>
+                    <button class="dot"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SEÇÃO FROTA OTIMIZADA ========== -->
+    <section class="frota" id="frota">
+        <div class="container">
+            <h2>Nossa Experiência a Bordo</h2>
+            <div class="frota-flex">
+                <div class="frota-text">
+                    <h3>Conforto e Tecnologia em Cada Detalhe</h3>
+                    <p>Nossa frota de Airbus A350 e Boeing 787 oferece o que há de mais moderno na aviação. Wi‑Fi de alta velocidade, entretenimento individual com telas 4K, poltronas‑cama que reclinam 180° e um serviço de bordo premiado internacionalmente.</p>
+                    
+                    <!-- Selo de qualidade -->
+                    <div class="selo-qualidade">
+                        <i class="ph ph-award" style="font-size: 2.5rem; color: #fbbf24;"></i>
+                        <span>Prêmio de Excelência em Voo 2024</span>
+                    </div>
+
+                    <button class="btn-outline">Conheça a bordo</button>
+                </div>
+                <div class="frota-visual">
+                    <img src="https://images.unsplash.com/photo-1544376798-89aa6b82c6cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80" 
+                         alt="Cabine executiva Auria Airlines" 
+                         class="main-plane">
+                </div>
+            </div>
+
+            <!-- Grid de benefícios -->
+            <div class="beneficios-grid">
+                <div class="beneficio-card">
+                    <i class="ph ph-wifi-high"></i>
+                    <h4>Wi‑Fi de alta velocidade</h4>
+                    <p>Navegue, trabalhe ou assista seus filmes com conexão rápida durante todo o voo.</p>
+                </div>
+                <div class="beneficio-card">
+                    <i class="ph ph-television"></i>
+                    <h4>Entretenimento 4K</h4>
+                    <p>Telas individuais de 16" com catálogo de filmes, séries e jogos atualizados.</p>
+                </div>
+                <div class="beneficio-card">
+                    <i class="ph ph-bed"></i>
+                    <h4>Poltronas‑cama 180°</h4>
+                    <p>Na executiva, sua poltrona vira uma cama totalmente plana com roupa de cama exclusiva.</p>
+                </div>
+                <div class="beneficio-card">
+                    <i class="ph ph-fork-knife"></i>
+                    <h4>Refeições gourmet</h4>
+                    <p>Cardápio assinado por chefs renomados, com opções especiais para todos os gostos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Seção Destinos (inicialmente oculta) -->
+<section id="destinosSection" class="hidden-section">
+    <div class="container">
+        <button class="btn-voltar" id="voltarInicio"><i class="ph ph-arrow-left"></i> Voltar para Início</button>
+        <h2 style="font-size: 3rem; margin-bottom: 20px;">Destinos Imperdíveis</h2>
+        <div class="destinos-grid">
+            <div class="destino-card">
+                <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-4.0.3&auto=format&fit=crop&w=2073&q=80" alt="Paris">
+                <div class="destino-info">
+                    <h3>Paris, França</h3>
+                    <p>Voos a partir de R$ 2.500</p>
+                </div>
+            </div>
+            <div class="destino-card">
+                <img src="https://images.unsplash.com/photo-1537996194471-e657dfaab6b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2038&q=80" alt="Bali">
+                <div class="destino-info">
+                    <h3>Bali, Indonésia</h3>
+                    <p>Voos a partir de R$ 3.800</p>
+                </div>
+            </div>
+            <div class="destino-card">
+                <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Maldivas">
+                <div class="destino-info">
+                    <h3>Maldivas</h3>
+                    <p>Voos a partir de R$ 5.200</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container footer-grid">
+        <div class="footer-brand">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%232563eb'/%3E%3Cpath d='M35 45 L65 45 L70 55 L30 55 Z' fill='white'/%3E%3Ctext x='50' y='75' font-size='40' text-anchor='middle' fill='white' font-family='Inter' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E" alt="Logo Auria" style="height: 50px;">
+            <p>Auria Airlines - Conectando o Brasil e o mundo com excelência e pontualidade.</p>
+            <div class="socials">
+                <i class="ph ph-instagram-logo"></i>
+                <i class="ph ph-facebook-logo"></i>
+                <i class="ph ph-twitter-logo"></i>
+                <i class="ph ph-youtube-logo"></i>
+                <i class="ph ph-linkedin-logo"></i>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h4>Viaje com a Auria</h4>
+            <a href="#">Check-in online</a>
+            <a href="#">Status de Voo</a>
+            <a href="#">Regras de Bagagem</a>
+            <a href="#">Clube Auria</a>
+            <a href="#">Comprar milhas</a>
+        </div>
+        <div class="footer-links">
+            <h4>Institucional</h4>
+            <a href="#">Sobre a Empresa</a>
+            <a href="#">Trabalhe Conosco</a>
+            <a href="#">Relação com Investidores</a>
+            <a href="#">Sala de Imprensa</a>
+            <a href="#">Código de Conduta</a>
+        </div>
+        <div class="footer-links">
+            <h4>Central de Ajuda</h4>
+            <a href="#">Perguntas Frequentes</a>
+            <a href="#">Fale Conosco</a>
+            <a href="#">Termos e Condições</a>
+            <a href="#">Política de Privacidade</a>
+            <a href="#">Acessibilidade</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <p>© 2025 Auria Airlines • CNPJ: 12.345.678/0001-90 • Sede em Belo Horizonte/MG • Todos os direitos reservados</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Modal para ofertas -->
+<div id="modalOferta" class="modal">
+    <div class="modal-content">
+        <h3 id="modalTitulo">Oferta</h3>
+        <p id="modalTexto">Você selecionou uma oferta especial!</p>
+        <button id="fecharModal">Fechar</button>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Carrossel
+        const slides = document.querySelector('.carrossel-slides');
+        const slideItems = document.querySelectorAll('.carrossel-slide');
+        const prevBtn = document.getElementById('btnPrev');
+        const nextBtn = document.getElementById('btnNext');
+        const dotsContainer = document.getElementById('carrosselDots');
+        const dots = document.querySelectorAll('.dot');
+        let currentIndex = 0;
+        const totalSlides = slideItems.length;
+
+        function updateCarousel() {
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === currentIndex);
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        if (nextBtn && prevBtn) {
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+        }
+
+        dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                currentIndex = idx;
+                updateCarousel();
+            });
+        });
+
+        // Navegação Destinos x Início
+        const mainContent = document.getElementById('mainContent');
+        const destinosSection = document.getElementById('destinosSection');
+        const navInicio = document.getElementById('navInicio');
+        const navDestinos = document.getElementById('navDestinos');
+        const voltarInicio = document.getElementById('voltarInicio');
+
+        function mostrarInicio() {
+            mainContent.style.display = 'block';
+            destinosSection.style.display = 'none';
+            navInicio.classList.add('active');
+            navDestinos.classList.remove('active');
+        }
+
+        function mostrarDestinos() {
+            mainContent.style.display = 'none';
+            destinosSection.style.display = 'block';
+            navDestinos.classList.add('active');
+            navInicio.classList.remove('active');
+        }
+
+        navInicio.addEventListener('click', (e) => {
+            e.preventDefault();
+            mostrarInicio();
+        });
+
+        navDestinos.addEventListener('click', (e) => {
+            e.preventDefault();
+            mostrarDestinos();
+        });
+
+        voltarInicio.addEventListener('click', mostrarInicio);
+
+        // Pílulas de serviços - interatividade
+        const servicePills = document.querySelectorAll('.service-pills button');
+        const serviceMessage = document.getElementById('serviceMessage');
+        const origemLabel = document.getElementById('origemLabel');
+        const destinoLabel = document.getElementById('destinoLabel');
+        const dataLabel = document.getElementById('dataLabel');
+        const origemInput = document.getElementById('origemInput');
+        const destinoInput = document.getElementById('destinoInput');
+        const dataIda = document.getElementById('dataIda');
+        const dataVolta = document.getElementById('dataVolta');
+
+        servicePills.forEach(btn => {
+            btn.addEventListener('click', () => {
+                servicePills.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const service = btn.dataset.service;
+                let mensagem = '';
+                if (service === 'voos') {
+                    mensagem = '✈️ Busque os melhores voos nacionais e internacionais.';
+                    origemLabel.textContent = 'Origem';
+                    destinoLabel.textContent = 'Destino';
+                    dataLabel.textContent = 'Ida e Volta';
+                } else if (service === 'onibus') {
+                    mensagem = '🚌 Ônibus confortáveis para todo o Brasil.';
+                    origemLabel.textContent = 'Cidade de origem';
+                    destinoLabel.textContent = 'Cidade de destino';
+                    dataLabel.textContent = 'Data de ida';
+                } else if (service === 'hoteis') {
+                    mensagem = '🏨 Hotéis com diárias a partir de R$ 149.';
+                    origemLabel.textContent = 'Cidade/País';
+                    destinoLabel.textContent = 'Check-in';
+                    dataLabel.textContent = 'Check-out';
+                } else if (service === 'pacotes') {
+                    mensagem = '🎒 Pacotes completos com voo + hotel.';
+                } else if (service === 'milhas') {
+                    mensagem = '💰 Compre ou utilize suas milhas com desconto.';
+                }
+                serviceMessage.textContent = mensagem;
+                serviceMessage.style.display = 'block';
+            });
+        });
+
+        // Modal para botões Resgate já
+        const modal = document.getElementById('modalOferta');
+        const modalTitulo = document.getElementById('modalTitulo');
+        const modalTexto = document.getElementById('modalTexto');
+        const fecharModal = document.getElementById('fecharModal');
+        const botoesResgate = document.querySelectorAll('.btn-resgate');
+
+        botoesResgate.forEach((btn, index) => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const card = btn.closest('.oferta-card');
+                const rota = card.querySelector('.rota-codigos')?.textContent || 'oferta';
+                modalTitulo.textContent = 'Oferta selecionada!';
+                modalTexto.textContent = `Você escolheu a rota ${rota}. Em breve você será redirecionado para a página de resgate.`;
+                modal.style.display = 'flex';
+            });
+        });
+
+        fecharModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Link "Ver todas" - carrega mais ofertas
+        const verTodas = document.getElementById('verTodasOfertas');
+        const ofertasGrid = document.getElementById('ofertasGrid');
+        verTodas.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Simula carregar mais ofertas
+            const novasOfertas = `
+                <div class="oferta-card">
+                    <div class="oferta-badge">LANÇAMENTO!</div>
+                    <div class="oferta-rota">
+                        <div class="rota-cidade">De: RIO DE JANEIRO (GIG)</div>
+                        <div class="rota-codigos">Para: LISBOA <span>LIS</span></div>
+                    </div>
+                    <div class="preco-original">De: 50.000 milhas</div>
+                    <div class="preco-promo">42.500 <small>milhas</small></div>
+                    <div class="preco-detalhe">o trecho + taxas*</div>
+                    <button class="btn-resgate">RESGATE JÁ</button>
+                </div>
+                <div class="oferta-card">
+                    <div class="oferta-badge">SUPER OFERTA</div>
+                    <div class="oferta-rota">
+                        <div class="rota-cidade">De: BRASÍLIA (BSB)</div>
+                        <div class="rota-codigos">Para: MIAMI <span>MIA</span></div>
+                    </div>
+                    <div class="preco-original">De: 62.000 milhas</div>
+                    <div class="preco-promo">49.600 <small>milhas</small></div>
+                    <div class="preco-detalhe">o trecho + taxas*</div>
+                    <button class="btn-resgate">RESGATE JÁ</button>
+                </div>
+            `;
+            ofertasGrid.insertAdjacentHTML('beforeend', novasOfertas);
+            verTodas.style.opacity = '0.5';
+            verTodas.style.pointerEvents = 'none';
+            // Reaplica evento nos novos botões
+            const novosBotoes = ofertasGrid.querySelectorAll('.oferta-card:not([data-processed]) .btn-resgate');
+            novosBotoes.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const card = btn.closest('.oferta-card');
+                    const rota = card.querySelector('.rota-codigos')?.textContent || 'oferta';
+                    modalTitulo.textContent = 'Oferta selecionada!';
+                    modalTexto.textContent = `Você escolheu a rota ${rota}. Em breve você será redirecionado.`;
+                    modal.style.display = 'flex';
+                });
+                card.dataset.processed = 'true';
+            });
+        });
+
+        // Itens de acesso rápido - alerta
+        const accessItems = document.querySelectorAll('.access-item');
+        accessItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const acao = item.querySelector('span')?.textContent || 'funcionalidade';
+                alert(`🔧 ${acao} - em breve disponível.`);
+            });
+        });
+
+        // Impedir envio do formulário para não recarregar
+        document.getElementById('searchForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Buscando voos... (simulação)');
+        });
+    })();
+</script>
+
+</body>
+</html>
